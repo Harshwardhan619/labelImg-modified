@@ -378,21 +378,19 @@ class Canvas(QWidget):
         # print(mods.__dict__)
         # if Qt.ControlModifier == int(mods):
         #     # self.zoomRequest.emit(v_delta)
-        n_points = len(shape.points)
-        lindex = (index + 1) % n_points
-        rindex = (index - 1 + n_points) % n_points
-        lshift = None
-        rshift = None
-        if index % 2 == 0:
-            rshift = QPointF(shiftPos.x(), 0)
-            lshift = QPointF(0, shiftPos.y())
-        else:
-            lshift = QPointF(shiftPos.x(), 0)
-            rshift = QPointF(0, shiftPos.y())
-        # shape.moveVertexBy(rindex, lshift)
-        shape.moveVertexBy(rindex, rshift)
-        shape.moveVertexBy(lindex, lshift)
-        # shape.moveVertexBy(lindex, rshift/2)
+        # n_points = len(shape.points)
+        # lindex = (index + 1) % n_points
+        # rindex = (index - 1 + n_points) % n_points
+        # lshift = None
+        # rshift = None
+        # if index % 2 == 0:
+        #     rshift = QPointF(shiftPos.x(), 0)
+        #     lshift = QPointF(0, shiftPos.y())
+        # else:
+        #     lshift = QPointF(shiftPos.x(), 0)
+        #     rshift = QPointF(0, shiftPos.y())
+        # shape.moveVertexBy(rindex, rshift)
+        # shape.moveVertexBy(lindex, lshift)
 
 
 

@@ -102,6 +102,7 @@ class Shape(object):
             # color = QColor(255, 255, 255, 255) if curr else color
             pen = QPen(color)
             # Try using integer sizes for smoother drawing(?)
+            # pen.setWidth(max(1, 2.4 / float(self.scale)))
             pen.setWidth(max(1, int(round(2.4 / self.scale))))
             pen.setStyle(Qt.DashDotLine)
             painter.setPen(pen)
@@ -162,7 +163,7 @@ class Shape(object):
 
     def drawVertex(self, path, i):
         # return
-        d = self.point_size / self.scale
+        d = float(self.point_size) / float(self.scale)
         shape = self.point_type
         point = self.points[i]
         if i == self._highlightIndex :
@@ -180,8 +181,9 @@ class Shape(object):
             # path.addRect(point.x() - d/2, point.y() , 50,1)
             # path.addRect(point.x() , point.y() - d/2, 1,50)
             # Changed here
-            path.addRect(point.x() - d/2, point.y(), d, 2)
-            path.addRect(point.x(), point.y() - d/2, 2, d)
+            d = float(d)
+            path.addRect(point.x() - d/2.0, point.y() -1, d, 2)
+            path.addRect(point.x() - 1 , point.y() - d/2.0, 2, d)
 
         elif shape == self.P_ROUND:
             path.addEllipse(point, d / 2.0, d / 2.0)
